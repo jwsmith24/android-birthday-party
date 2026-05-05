@@ -1,7 +1,7 @@
 package com.example.androidbirthdayparty.data
 
 enum class RsvpStatus {
-    PENDING,
-    ACCEPTED,
-    DECLINED
+    PENDING, ACCEPTED, DECLINED;
+
+    fun displayName() = name.lowercase().replaceFirstChar { it.uppercase() }
 }
