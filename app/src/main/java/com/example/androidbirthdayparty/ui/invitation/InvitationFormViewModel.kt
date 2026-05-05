@@ -10,9 +10,10 @@ import kotlinx.coroutines.flow.update
 
 class InvitationFormViewModel(
     private val invitationRepository: InvitationRepository
-): ViewModel() {
+) : ViewModel() {
 
-    private val _formState = MutableStateFlow(Invitation(name = "", address = ""))
+    private val defaultFormState = Invitation(name = "", address = "", hasPlusOne = false)
+    private val _formState = MutableStateFlow(defaultFormState)
     val formState = _formState.asStateFlow()
 
     fun handleNameFieldChange(name: String) {
@@ -31,10 +32,16 @@ class InvitationFormViewModel(
         return (_formState.value.name.isNotEmpty() && _formState.value.address.isNotEmpty())
     }
 
+    private fun resetForm() {
+        _formState.update { defaultFormState }
+    }
+
     fun handleSubmit() {
         if (invitationValid()) {
             invitationRepository.add(_formState.value)
+            resetForm()
         }
+
     }
 
 

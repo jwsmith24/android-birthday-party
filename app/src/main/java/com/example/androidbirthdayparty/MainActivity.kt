@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.androidbirthdayparty.data.InvitationRepository
+import com.example.androidbirthdayparty.ui.invitation.InvitationFormViewModel
 import com.example.androidbirthdayparty.ui.invitation.InvitationViewModel
 import com.example.androidbirthdayparty.ui.theme.AndroidBirthdayPartyTheme
 
@@ -19,6 +20,7 @@ class MainActivity : ComponentActivity() {
 
     private lateinit var invitationRepository: InvitationRepository
     private lateinit var invitationViewModel: InvitationViewModel
+    private lateinit var invitationFormViewModel: InvitationFormViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +31,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             AndroidBirthdayPartyTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    NavGraph(invitationViewModel = invitationViewModel, modifier = Modifier.padding(innerPadding))
+                    NavGraph(
+                        invitationViewModel = invitationViewModel,
+                        invitationFormViewModel = invitationFormViewModel,
+                        modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -38,6 +43,6 @@ class MainActivity : ComponentActivity() {
     private fun init() {
         invitationRepository = InvitationRepository()
         invitationViewModel = InvitationViewModel(invitationRepository)
-
+        invitationFormViewModel = InvitationFormViewModel(invitationRepository)
     }
 }

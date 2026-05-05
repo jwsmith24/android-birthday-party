@@ -24,7 +24,8 @@ fun InvitationFormScreen(
     handleNameFieldChange: (String) -> Unit,
     handleAddressFieldChange: (String) -> Unit,
     handlePlusOneChange: (Boolean) -> Unit,
-    handleSubmit: () -> Unit
+    handleSubmit: () -> Unit,
+    navToInvitationScreen: () -> Unit
 ) {
     Column(
         modifier = modifier
@@ -54,7 +55,10 @@ fun InvitationFormScreen(
             Text("Bringing plus one")
         }
 
-        Button(onClick = handleSubmit) {
+        Button(onClick = {
+            handleSubmit()
+            navToInvitationScreen()
+        }) {
             Text(text = "Submit")
         }
     }
@@ -70,5 +74,7 @@ fun InvitationFormPreview() {
         handleSubmit = {},
         handleNameFieldChange = {},
         handleAddressFieldChange = {},
-        handlePlusOneChange = {})
+        handlePlusOneChange = {},
+        navToInvitationScreen = {}
+    )
 }
