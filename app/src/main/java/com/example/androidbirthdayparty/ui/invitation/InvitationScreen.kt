@@ -21,17 +21,16 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 @Composable
-fun InvitationScreen(invitations: StateFlow<List<Invitation>>) {
+fun InvitationScreen(invitations:List<Invitation>, modifier: Modifier = Modifier) {
 
-    val invites = invitations.collectAsState()
 
     Column (
-        modifier = Modifier
+        modifier = modifier
         .fillMaxSize()
             .padding(4.dp)
 
     ) {
-        Row(modifier = Modifier
+        Row(modifier = modifier
             .fillMaxWidth()
             .padding(all = 4.dp)
 
@@ -39,7 +38,7 @@ fun InvitationScreen(invitations: StateFlow<List<Invitation>>) {
             Text(text = stringResource(R.string.invitation_screen_title), style = MaterialTheme.typography.titleLarge)
         }
         LazyColumn(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            items(invites.value) {invite ->
+            items(invitations) {invite ->
                 InvitationCard(invite)
             }
         }
@@ -56,5 +55,5 @@ fun InvitationScreenPreview() {
         Invitation(name = "Rob", address = "test-address"),
         Invitation(name = "Jacob", address = "test-address")
     )
-    InvitationScreen(invitations = MutableStateFlow(mockInvites))
+    InvitationScreen(invitations = mockInvites)
 }

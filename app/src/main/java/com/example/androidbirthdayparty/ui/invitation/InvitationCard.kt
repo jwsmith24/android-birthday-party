@@ -21,7 +21,7 @@ import com.example.androidbirthdayparty.data.RsvpStatus
 import com.example.androidbirthdayparty.ui.theme.AndroidBirthdayPartyTheme
 
 @Composable
-fun InvitationCard(invite: Invitation) {
+fun InvitationCard(invite: Invitation, modifier: Modifier = Modifier) {
 
     val statusColor = when (invite.rsvpStatus) {
         RsvpStatus.PENDING -> Color.Yellow
@@ -29,12 +29,12 @@ fun InvitationCard(invite: Invitation) {
         RsvpStatus.DECLINED -> Color.Red
     }
     Card(
-        modifier = Modifier.fillMaxWidth().padding(4.dp)
+        modifier = modifier.fillMaxWidth().padding(4.dp)
 
 
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth().padding(8.dp),
+            modifier = modifier.fillMaxWidth().padding(8.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
