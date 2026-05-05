@@ -23,3 +23,13 @@ the party.
 ### Testing:
 - [JUnit4 for Android](https://developer.android.com/training/testing/local-tests)
 - [Mockk - Kotlin Mocking Library](https://mockk.io/)
+
+## Getting Started
+
+- If running in IntelliJ, make sure you install the Android and Android Design Tools plugins.
+
+![img.png](img/androidPlugins.png)
+
+- Setup emulator
+
+- Open the [user stories](./docs/USER_STORIES.md) file
