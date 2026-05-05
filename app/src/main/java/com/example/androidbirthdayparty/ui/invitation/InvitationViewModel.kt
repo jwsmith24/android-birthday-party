@@ -1,4 +1,4 @@
-package com.example.androidbirthdayparty.ui
+package com.example.androidbirthdayparty.ui.invitation
 
 import androidx.lifecycle.ViewModel
 import com.example.androidbirthdayparty.data.Invitation

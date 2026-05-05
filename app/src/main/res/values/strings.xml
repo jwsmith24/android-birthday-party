@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Android Birthday Party</string>
+    <string name="invitation_screen_title">Android Birthday Party</string>
+    <string name="rsvp_status">Status: </string>
+    <string name="plus_one"> +1 </string>
 </resources>
