@@ -40,8 +40,8 @@ fun InvitationScreen(invitations: StateFlow<List<Invitation>>) {
                     ,
                     verticalArrangement = Arrangement.spacedBy(4.dp)
                 ){
-                    Text(text = invite.name)
-                    Text(invite.rsvpStatus.displayName())
+                    Text(text = invite.name + if (invite.hasPlusOne) " +1" else "")
+                    Text(text = invite.rsvpStatus.displayName())
                 }
             }
         }
@@ -54,7 +54,7 @@ fun InvitationScreen(invitations: StateFlow<List<Invitation>>) {
 @Preview(showBackground = true)
 fun InvitationScreenPreview() {
     val mockInvites = listOf(
-        Invitation(name = "Curt"),
+        Invitation(name = "Curt", hasPlusOne = true),
         Invitation(name = "Rob"),
         Invitation(name = "Jacob")
     )
