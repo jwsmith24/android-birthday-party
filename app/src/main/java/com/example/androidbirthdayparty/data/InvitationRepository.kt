@@ -7,14 +7,7 @@ import kotlin.collections.listOf
 
 class InvitationRepository {
 
-    private val _invitations = MutableStateFlow(
-        listOf(
-            Invitation(name = "Curt"),
-            Invitation(name = "Rob"),
-            Invitation(name = "Jacob")
-        )
-    )
-
+    private val _invitations = MutableStateFlow(listOf<Invitation>())
     val invitations = _invitations.asStateFlow()
 
     fun add(invitation: Invitation) {
