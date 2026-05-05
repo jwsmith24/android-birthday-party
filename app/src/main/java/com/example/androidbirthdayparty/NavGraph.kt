@@ -2,16 +2,15 @@ package com.example.androidbirthdayparty
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-
 import androidx.navigation.compose.rememberNavController
 import com.example.androidbirthdayparty.ui.invitation.InvitationScreen
 import com.example.androidbirthdayparty.ui.invitation.InvitationViewModel
 import kotlinx.serialization.Serializable
+
 @Composable
 fun NavGraph(
     invitationViewModel: InvitationViewModel,
@@ -25,7 +24,11 @@ fun NavGraph(
         startDestination = Route.InvitationScreen
     ) {
         composable<Route.InvitationScreen> {
-            InvitationScreen(invitations = invitations.value, modifier = modifier)
+            InvitationScreen(
+                invitations = invitations.value,
+                modifier = modifier,
+                navToInvitationForm = {navController.navigate(Route.InvitationForm)}
+            )
         }
 
         composable<Route.InvitationForm> {

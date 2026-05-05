@@ -18,7 +18,7 @@ class InvitationRepositoryTest {
     fun whenAddInvitationCalled_thenInvitationAddedToList() {
         assertTrue(invitationRepository.invitations.value.isEmpty())
 
-        invitationRepository.add(Invitation(name = "test-person"))
+        invitationRepository.add(Invitation(name = "test-person", address = "test"))
 
         assertEquals(1, invitationRepository.invitations.value.size)
 
