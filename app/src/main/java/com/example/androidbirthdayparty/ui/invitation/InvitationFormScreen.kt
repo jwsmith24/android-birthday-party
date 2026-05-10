@@ -21,9 +21,7 @@ import com.example.androidbirthdayparty.data.Invitation
 fun InvitationFormScreen(
     modifier: Modifier = Modifier,
     formState: Invitation,
-    handleNameFieldChange: (String) -> Unit,
-    handleAddressFieldChange: (String) -> Unit,
-    handlePlusOneChange: (Boolean) -> Unit,
+    onUpdate: (InvitationFormEvent) -> Unit,
     handleSubmit: () -> Unit,
     navToInvitationScreen: () -> Unit
 ) {
@@ -33,14 +31,14 @@ fun InvitationFormScreen(
         OutlinedTextField(
             value = formState.name,
             label = { Text(text = "name") },
-            onValueChange = handleNameFieldChange,
+            onValueChange = { onUpdate(InvitationFormEvent.NameChanged(it)) },
             modifier = Modifier.fillMaxWidth().padding(10.dp).testTag("inputName"),
         )
 
         OutlinedTextField(
             value = formState.address,
             label = { Text(text = "address") },
-            onValueChange = handleAddressFieldChange,
+            onValueChange = { onUpdate(InvitationFormEvent.AddressChanged(it)) },
             modifier = Modifier.fillMaxWidth().padding(10.dp).testTag("inputAddress"),
         )
 
@@ -49,7 +47,7 @@ fun InvitationFormScreen(
         ) {
             Checkbox(
                 checked = formState.hasPlusOne,
-                onCheckedChange = handlePlusOneChange,
+                onCheckedChange = { onUpdate(InvitationFormEvent.PlusOneChanged(it)) },
                 modifier = Modifier.testTag("checkboxPlusOne")
             )
             Text("Bringing plus one")
@@ -72,9 +70,7 @@ fun InvitationFormPreview() {
     InvitationFormScreen(
         formState = mockInvitation,
         handleSubmit = {},
-        handleNameFieldChange = {},
-        handleAddressFieldChange = {},
-        handlePlusOneChange = {},
+        onUpdate = {},
         navToInvitationScreen = {}
     )
 }

@@ -40,9 +40,7 @@ fun NavGraph(
                 modifier = modifier,
                 formState = formState.value,
                 handleSubmit = invitationFormViewModel::handleSubmit,
-                handlePlusOneChange = invitationFormViewModel::handlePlusOneChange,
-                handleNameFieldChange = invitationFormViewModel::handleNameFieldChange,
-                handleAddressFieldChange = invitationFormViewModel::handleAddressChange,
+                onUpdate = invitationFormViewModel::onUpdate,
                 navToInvitationScreen = {navController.navigate(Route.InvitationScreen)}
             )
         }

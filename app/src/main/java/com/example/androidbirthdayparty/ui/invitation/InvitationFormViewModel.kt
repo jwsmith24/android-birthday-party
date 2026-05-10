@@ -16,16 +16,13 @@ class InvitationFormViewModel(
     private val _formState = MutableStateFlow(defaultFormState)
     val formState = _formState.asStateFlow()
 
-    fun handleNameFieldChange(name: String) {
-        _formState.update { it.copy(name = name) }
-    }
 
-    fun handlePlusOneChange(hasPlusOne: Boolean) {
-        _formState.update { it.copy(hasPlusOne = hasPlusOne) }
-    }
-
-    fun handleAddressChange(address: String) {
-        _formState.update { it.copy(address = address) }
+    fun onUpdate(event: InvitationFormEvent) {
+        when (event) {
+            is InvitationFormEvent.NameChanged -> _formState.update { it.copy(name = event.name) }
+            is InvitationFormEvent.AddressChanged -> _formState.update { it.copy(address = event.address) }
+            is InvitationFormEvent.PlusOneChanged -> _formState.update { it.copy(hasPlusOne = event.hasPlusOne) }
+        }
     }
 
     private fun invitationValid(): Boolean {
@@ -43,6 +40,11 @@ class InvitationFormViewModel(
         }
 
     }
+}
 
+sealed interface InvitationFormEvent {
+    data class NameChanged(val name: String): InvitationFormEvent
+    data class AddressChanged(val address: String): InvitationFormEvent
+    data class PlusOneChanged(val hasPlusOne: Boolean): InvitationFormEvent
 
 }
