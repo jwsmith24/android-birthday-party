@@ -40,7 +40,7 @@ fun InvitationCard(invite: Invitation, modifier: Modifier = Modifier) {
         ) {
             Column {
                 Text(
-                    text = invite.name + if (invite.hasPlusOne) stringResource(R.string.plus_one) else "",
+                    text = invite.name + if (invite.hasPlusOne) " " + stringResource(R.string.plus_one) else "",
                 )
                 Text(
                     text = invite.address, fontStyle = FontStyle.Italic
