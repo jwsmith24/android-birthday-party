@@ -47,7 +47,7 @@ fun InvitationCard(invite: Invitation, modifier: Modifier = Modifier) {
                 )
             }
             Row {
-                Text(text = stringResource(R.string.rsvp_status))
+                Text(text = stringResource(R.string.rsvp_status) + " ")
                 Text(text = invite.rsvpStatus.displayName(), color = statusColor)
             }
         }
